@@ -10,6 +10,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -28,13 +29,26 @@ public class ExternalApiService {
 	@Value("${com.ionix.backend.service.url-api}")
 	private String url;
 
+	private RestTemplate template;
+
+	public ExternalApiService() {
+		template = new RestTemplate();
+	}
+
 	public ExternalResponse getExternalResponse(String param) throws InternalException {
-		RestTemplate template = new RestTemplate();
 
 		String encodedParam = encodeParam(param);
 
 		long beforeTime = Calendar.getInstance().getTimeInMillis();
-		ResponseEntity<ApiResponse> response = template.getForEntity(url + encodedParam, ApiResponse.class);
+
+		ResponseEntity<ApiResponse> response = new ResponseEntity<>(HttpStatus.OK);
+
+		try {
+			response = template.getForEntity(getUrl() + encodedParam, ApiResponse.class);
+		} catch (Exception e) {
+			throw new InternalException(e.getLocalizedMessage());
+		}
+
 		long afterTime = Calendar.getInstance().getTimeInMillis();
 		long elapsedTime = afterTime - beforeTime;
 
@@ -51,12 +65,12 @@ public class ExternalApiService {
 		return externalResponse;
 	}
 
-	private String encodeParam(String plainRut) throws InternalException {
+	protected String encodeParam(String plainRut) throws InternalException {
 
 		String encodedRut;
 		DESKeySpec keySpec;
 		try {
-			keySpec = new DESKeySpec(secret.getBytes(StandardCharsets.UTF_8));
+			keySpec = new DESKeySpec(getSecret().getBytes(StandardCharsets.UTF_8));
 			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
 
 			SecretKey generateSecret = keyFactory.generateSecret(keySpec);
@@ -72,5 +86,13 @@ public class ExternalApiService {
 		}
 
 		return encodedRut;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public String getUrl() {
+		return url;
 	}
 }

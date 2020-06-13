@@ -51,10 +51,4 @@ public class User {
 		this.phone = phone;
 	}
 
-	@Override
-	public String toString() {
-		return "User [getName()=" + getName() + ", getUsername()=" + getUsername() + ", getEmail()=" + getEmail()
-				+ ", getPhone()=" + getPhone() + "]";
-	}
-
 }

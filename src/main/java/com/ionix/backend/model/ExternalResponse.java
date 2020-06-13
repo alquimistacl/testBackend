@@ -31,12 +31,6 @@ public class ExternalResponse {
 		this.result = result;
 	}
 
-	@Override
-	public String toString() {
-		return "ExternalResponse [getResponseCode()=" + getResponseCode() + ", getDescription()=" + getDescription()
-				+ ", getElapsedTime()=" + getElapsedTime() + ", getResult()=" + getResult() + "]";
-	}
-
 	public Long getElapsedTime() {
 		return elapsedTime;
 	}
