@@ -1,4 +1,4 @@
-package com.ionix.users.exception;
+package com.ionix.backend.exception;
 
 import io.swagger.annotations.ApiModelProperty;
 

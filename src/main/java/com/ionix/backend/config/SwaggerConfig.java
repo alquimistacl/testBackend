@@ -1,4 +1,4 @@
-package com.ionix.users.config;
+package com.ionix.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.ionix.users.controller")).build().pathMapping("/");
+				.apis(RequestHandlerSelectors.basePackage("com.ionix.backend.controller")).build().pathMapping("/");
 
 	}
 }

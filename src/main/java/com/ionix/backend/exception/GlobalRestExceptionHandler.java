@@ -1,4 +1,4 @@
-package com.ionix.users.exception;
+package com.ionix.backend.exception;
 
 import java.util.HashMap;
 import java.util.Map;

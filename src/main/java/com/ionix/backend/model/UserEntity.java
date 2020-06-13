@@ -1,4 +1,4 @@
-package com.ionix.users.model;
+package com.ionix.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

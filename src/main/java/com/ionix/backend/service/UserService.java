@@ -1,4 +1,4 @@
-package com.ionix.users.service;
+package com.ionix.backend.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ionix.users.exception.GenericSqlException;
-import com.ionix.users.model.User;
-import com.ionix.users.model.UserEntity;
-import com.ionix.users.repository.UserRepository;
+import com.ionix.backend.exception.GenericSqlException;
+import com.ionix.backend.model.User;
+import com.ionix.backend.model.UserEntity;
+import com.ionix.backend.repository.UserRepository;
 
 @Service
 public class UserService {

@@ -1,8 +1,8 @@
-package com.ionix.users.repository;
+package com.ionix.backend.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ionix.users.model.UserEntity;
+import com.ionix.backend.model.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
 

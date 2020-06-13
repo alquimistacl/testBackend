@@ -1,4 +1,4 @@
-package com.ionix.users.exception;
+package com.ionix.backend.exception;
 
 public class GenericSqlException extends Exception {
 

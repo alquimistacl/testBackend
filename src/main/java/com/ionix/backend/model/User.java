@@ -1,4 +1,4 @@
-package com.ionix.users.model;
+package com.ionix.backend.model;
 
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
